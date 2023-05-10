@@ -1,19 +1,23 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'assignments'
+  protected tableName = 'programme_applications'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
-      table.string('link').notNullable()
-
-      table.dateTime('deadline').notNullable()
-
       table.integer('programme_id').unsigned().notNullable()
+      // table.foreign('programme_id').references('programmes.id').onDelete('CASCADE')
 
-      table.integer('tutor_id').unsigned().notNullable()
+      table.integer('student_id').unsigned().notNullable()
+      // table.foreign('student_id').references('users.id').onDelete('CASCADE')
+
+      table.enum('application_status', ['PENDING', 'ACCEPTED', 'REJECTED'], {
+        useNative: true,
+        enumName: 'student_programme_application_status',
+        existingType: false,
+      })
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
@@ -24,6 +28,7 @@ export default class extends BaseSchema {
   }
 
   public async down() {
+    this.schema.raw('DROP TYPE IF EXISTS "student_programme_application_status"')
     this.schema.dropTable(this.tableName)
   }
 }
