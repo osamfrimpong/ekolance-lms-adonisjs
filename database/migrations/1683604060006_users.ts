@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { UserType } from 'Contracts/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'users'
@@ -16,11 +17,14 @@ export default class extends BaseSchema {
 
       table.string('nonce').unique().notNullable()
 
-      table.enum('user_type', ['ADMIN', 'TUTOR', 'STUDENT'], {
-        useNative: true,
-        enumName: 'type_of_user',
-        existingType: false,
-      })
+      table
+        .enum('user_type', Object.values(UserType), {
+          useNative: true,
+          enumName: 'type_of_user',
+          existingType: false,
+        })
+        .defaultTo(UserType.STUDENT)
+        .notNullable()
 
       /**
        * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL

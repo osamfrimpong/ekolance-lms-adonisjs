@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { ProgrammeApplicationStatus } from 'Contracts/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'programme_applications'
@@ -13,11 +14,14 @@ export default class extends BaseSchema {
       table.integer('student_id').unsigned().notNullable()
       // table.foreign('student_id').references('users.id').onDelete('CASCADE')
 
-      table.enum('application_status', ['PENDING', 'ACCEPTED', 'REJECTED'], {
-        useNative: true,
-        enumName: 'student_programme_application_status',
-        existingType: false,
-      })
+      table
+        .enum('application_status', Object.values(ProgrammeApplicationStatus), {
+          useNative: true,
+          enumName: 'student_programme_application_status',
+          existingType: false,
+        })
+        .defaultTo(ProgrammeApplicationStatus.PENDING)
+        .notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

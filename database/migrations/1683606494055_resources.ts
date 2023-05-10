@@ -1,4 +1,5 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import { ResourceType } from 'Contracts/enums'
 
 export default class extends BaseSchema {
   protected tableName = 'resources'
@@ -14,11 +15,14 @@ export default class extends BaseSchema {
 
       table.integer('programme_id').unsigned()
 
-      table.enum('resource_type', ['VIDEO', 'DOCUMENT', 'REPOSITORY', 'WEBSITE'], {
-        useNative: true,
-        enumName: 'programme_resource_type',
-        existingType: false,
-      })
+      table
+        .enum('resource_type', Object.values(ResourceType), {
+          useNative: true,
+          enumName: 'programme_resource_type',
+          existingType: false,
+        })
+        .defaultTo(ResourceType.DOCUMENT)
+        .notNullable()
 
       table.integer('added_by').unsigned().notNullable()
       /**
