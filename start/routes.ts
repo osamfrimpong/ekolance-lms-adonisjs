@@ -24,7 +24,6 @@ import './routes/tutor'
 
 import Route from '@ioc:Adonis/Core/Route'
 
-
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+Route.get('/home/test', async ({ view }) => {
+  return view.render('student.register')
 })
