@@ -19,8 +19,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="static/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="static/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ staticFile('img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ staticFile('img/favicon.png') }}">
   <title>
     Ekolance LMS - Student Dashboard
   </title>
@@ -31,13 +31,13 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="static/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="static/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ staticFile('css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ staticFile('css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="static/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{ staticFile('css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="static/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <link id="pagestyle" href="{{ staticFile('css/soft-ui-dashboard.css') }}?v=1.0.3" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -45,7 +45,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
-        <img src="static/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="{{ staticFile('img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Ekolance LMS Student</span>
       </a>
     </div>
@@ -120,7 +120,7 @@
           <div class="row">
             <div class="col-xl-4 mb-xl-0 mb-4">
               <div class="card bg-transparent shadow-xl">
-                <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('static/img/curved-images/curved14.jpg');">
+                <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('{{ staticFile('img/curved-images/curved14.jpg') }}');">
                   <span class="mask bg-gradient-dark"></span>
                   <div class="card-body position-relative z-index-1 p-3">
                     <h5 class="text-white mt-4 mb-5 pb-2">0x90ce4a0bf46cee5ab5fe9c52f1895c9c351a3a997306621ef1aa0da566a9eb88</h5>
@@ -132,7 +132,7 @@
                         </div>
                       </div>
                       <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
-                        <img class="w-60 mt-2" src="static/img/logos/mastercard.png" alt="logo">
+                        <img class="w-60 mt-2" src="{{ staticFile('img/logos/mastercard.png') }}" alt="logo">
                       </div>
                     </div>
                   </div>
@@ -219,7 +219,7 @@
                   <div class="card card-blog card-plain">
                     <div class="position-relative">
                       <a class="d-block shadow-xl border-radius-xl">
-                        <img src="static/img/home-decor-1.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                        <img src="{{ staticFile('img/home-decor-1.jpg') }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                       </a>
                     </div>
                     <div class="card-body px-1 pb-0">
@@ -242,7 +242,7 @@
                   <div class="card card-blog card-plain">
                     <div class="position-relative">
                       <a class="d-block shadow-xl border-radius-xl">
-                        <img src="static/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                        <img src="{{ staticFile('img/home-decor-2.jpg') }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
                       </a>
                     </div>
                     <div class="card-body px-1 pb-0">
@@ -265,7 +265,7 @@
                   <div class="card card-blog card-plain">
                     <div class="position-relative">
                       <a class="d-block shadow-xl border-radius-xl">
-                        <img src="static/img/home-decor-3.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                        <img src="{{ staticFile('img/home-decor-3.jpg') }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                       </a>
                     </div>
                     <div class="card-body px-1 pb-0">
@@ -494,11 +494,11 @@
   </main>
 
   <!--   Core JS Files   -->
-  <script src="static/js/core/popper.min.js"></script>
-  <script src="static/js/core/bootstrap.min.js"></script>
-  <script src="static/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="static/js/plugins/smooth-scrollbar.min.js"></script>
-  <script src="static/js/plugins/chartjs.min.js"></script>
+  <script src="{{ staticFile('js/core/popper.min.js') }}"></script>
+  <script src="{{ staticFile('js/core/bootstrap.min.js') }}"></script>
+  <script src="{{ staticFile('js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="{{ staticFile('js/plugins/smooth-scrollbar.min.js') }}"></script>
+  <script src="{{ staticFile('js/plugins/chartjs.min.js') }}"></script>
   <script>
     var ctx2 = document.getElementById("chart-line").getContext("2d");
 
@@ -605,7 +605,7 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="static/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="{{ staticFile('js/soft-ui-dashboard.min.js') }}?v=1.0.3"></script>
 </body>
 
 </html>
