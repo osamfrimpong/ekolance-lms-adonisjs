@@ -1,6 +1,5 @@
 import Route from '@ioc:Adonis/Core/Route'
 
-
 Route.get('/tutor', 'Tutor/TutorDashboardController.login').as('tutor.index')
 
 Route.group(() => {
