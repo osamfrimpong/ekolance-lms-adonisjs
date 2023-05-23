@@ -25,3 +25,7 @@ import './routes/tutor'
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'LandingPagesController.index').as('home')
+
+Route.get('/connect', ({ view }) => {
+  return view.render('welcome')
+})

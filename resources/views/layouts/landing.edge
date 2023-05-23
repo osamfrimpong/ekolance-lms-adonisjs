@@ -37,6 +37,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  @entryPointScripts('app')
 </head>
 
 <body>
@@ -58,8 +59,8 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      <a href="courses.html" class="get-started-btn">Connect Wallet</a>
+<w3m-core-button class="get-started-btn"></w3m-core-button>
+      {{--  <button  class="get-started-btn" id="btn-connect">Connect Wallet</button>  --}}
 
     </div>
   </header><!-- End Header -->
@@ -82,8 +83,7 @@
       </div>
 
     </div>
-  </footer><!-- End Footer -->
-
+  </footer>
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -97,6 +97,12 @@
 
   <!-- Template Main JS File -->
   <script src="{{ staticFile('landing/js/main.js')}}"></script>
+
+   <script type="text/javascript" src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.12/dist/index.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.4.0/dist/fortmatic.js"></script>
 
 </body>
 
