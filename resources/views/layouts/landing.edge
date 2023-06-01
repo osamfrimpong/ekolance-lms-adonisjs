@@ -46,7 +46,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">Ekolance LMS
+      <h1 class="logo me-auto"><a href="{{ route('home') }}">Ekolance LMS
         </a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="{{ staticFile('landing/img/logo.png')}}" alt="" class="img-fluid"></a>-->
@@ -56,10 +56,11 @@
           <li><a class="active" href="{{ route('home') }}">Home</a></li>
           <li><a href="{{ route('tutor.index') }}">Tutors</a></li>
           <li><a href="{{ route('student.index') }}">Students</a></li>
+          <li><w3m-core-button balance="show" icon="hide" avatar="hide" text="get started" class="get-started-btn"></w3m-core-button></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-<w3m-core-button class="get-started-btn"></w3m-core-button>
+
       {{--  <button  class="get-started-btn" id="btn-connect">Connect Wallet</button>  --}}
 
     </div>
@@ -98,11 +99,91 @@
   <!-- Template Main JS File -->
   <script src="{{ staticFile('landing/js/main.js')}}"></script>
 
-   <script type="text/javascript" src="https://unpkg.com/web3@1.10.0/dist/web3.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/web3modal@1.9.12/dist/index.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/@walletconnect/web3-provider@1.8.0/dist/umd/index.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/fortmatic@2.4.0/dist/fortmatic.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+   <script type="text/javascript">
+
+  const isWalletConnected = localStorage.getItem('wagmi.connected')
+
+
+
+   function showConnectWalletPrompt(){
+       Swal.fire({
+  title: 'Connect Wallet',
+  text: "You haven't connected your wallet, do connect to ensure maximum utilization of our patform",
+  icon: 'info',
+  showCancelButton: true,
+  confirmButtonColor: '#0712e4',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Connect',
+  allowEscapeKey: false,
+  allowOutsideClick: false,
+}).then((result) => {
+  if (result.isConfirmed) {
+   //try to connect wallet over here
+
+   doWalletConnect().then((result) => {
+    console.log(`Is Wallet Connected: ${window.getAccount.address}`)
+    // if(isWalletConnected())
+    // {
+    //   showGetStartedAsPrompt()
+    // }
+   })
+  }
+})
+   }
+
+     function showGetStartedAsPrompt(){
+       Swal.fire({
+  title: 'Get Started As',
+  text: "You have connected your wallet, please choose how you want to proceed as",
+  icon: 'info',
+  showCancelButton: true,
+  showDenyButton: true,
+  allowEscapeKey: false,
+  allowOutsideClick: false,
+  confirmButtonColor: '#0712e4',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Student',
+  denyButtonText: 'Tutor',
+  denyButtonColor: '#0712e4'
+}).then((result) => {
+  if (result.isConfirmed) {
+   //proceed as student
+    window.location.replace('/student/dashboard')
+  }
+
+  if (result.isDenied) {
+   //proceed as tutor
+   window.location.replace('/tutor/dashboard')
+  }
+})
+   }
+
+
+
+   function getStarted(){
+      if ( isWalletConnected !== 'true') {
+        //wallet is not connected
+        showConnectWalletPrompt()
+      }
+      else{
+        //wallet is connected show prompt to continue as student/tutor
+        showGetStartedAsPrompt()
+      }
+   }
+   //check if wallet is connected or not
+
+if ( isWalletConnected !== 'true') {
+  console.log('wallet not connected')
+  //show alert after some timer
+  setTimeout(() => {
+    showConnectWalletPrompt()
+  }, 10000)
+} else {
+  console.log('wallet connected')
+}
+   </script>
 
 </body>
 

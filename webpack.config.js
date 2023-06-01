@@ -203,6 +203,21 @@ config.infrastructureLogging = {
 }
 config.stats = 'errors-warnings'
 
+config.resolve.fallback = {
+  path: require.resolve('path-browserify'),
+  fs: false,
+  os: require.resolve('os-browserify/browser'),
+  zlib: require.resolve('browserify-zlib'),
+  stream: require.resolve('stream-browserify'),
+  net: false,
+  tls: false,
+  crypto: require.resolve('crypto-browserify'),
+  http: require.resolve('stream-http'),
+  https: require.resolve('https-browserify'),
+  url: require.resolve('url/'),
+  assert: require.resolve('assert/'),
+}
+
 /*
 |--------------------------------------------------------------------------
 | Export config
