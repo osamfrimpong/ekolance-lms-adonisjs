@@ -105,63 +105,6 @@
 
   const isWalletConnected = localStorage.getItem('wagmi.connected')
 
-
-
-   function showConnectWalletPrompt(){
-       Swal.fire({
-  title: 'Connect Wallet',
-  text: "You haven't connected your wallet, do connect to ensure maximum utilization of our patform",
-  icon: 'info',
-  showCancelButton: true,
-  confirmButtonColor: '#0712e4',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Connect',
-  allowEscapeKey: false,
-  allowOutsideClick: false,
-}).then((result) => {
-  if (result.isConfirmed) {
-   //try to connect wallet over here
-
-   doWalletConnect().then((result) => {
-    console.log(`Is Wallet Connected: ${window.getAccount.address}`)
-    // if(isWalletConnected())
-    // {
-    //   showGetStartedAsPrompt()
-    // }
-   })
-  }
-})
-   }
-
-     function showGetStartedAsPrompt(){
-       Swal.fire({
-  title: 'Get Started As',
-  text: "You have connected your wallet, please choose how you want to proceed as",
-  icon: 'info',
-  showCancelButton: true,
-  showDenyButton: true,
-  allowEscapeKey: false,
-  allowOutsideClick: false,
-  confirmButtonColor: '#0712e4',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Student',
-  denyButtonText: 'Tutor',
-  denyButtonColor: '#0712e4'
-}).then((result) => {
-  if (result.isConfirmed) {
-   //proceed as student
-    window.location.replace('/student/dashboard')
-  }
-
-  if (result.isDenied) {
-   //proceed as tutor
-   window.location.replace('/tutor/dashboard')
-  }
-})
-   }
-
-
-
    function getStarted(){
       if ( isWalletConnected !== 'true') {
         //wallet is not connected

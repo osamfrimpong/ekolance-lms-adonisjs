@@ -1,3 +1,4 @@
+const Swal = require('sweetalert2')
 const { EthereumClient, w3mConnectors, w3mProvider } = require('@web3modal/ethereum')
 const { Web3Modal } = require('@web3modal/html')
 const {
@@ -53,7 +54,7 @@ const unwatchAccount = watchAccount((account) => {
 })
 
 const unwatchNetwork = watchNetwork((network) => {
-  console.log(`Network change ${network.chain.name} - ${network.chain.id}`)
+  // console.log(`Network change ${network.chain.name} - ${network.chain.id}`)
 })
 
 async function doWalletConnect() {
@@ -63,13 +64,65 @@ async function doWalletConnect() {
   const unwatchNetwork = watchAccount((account) => {
     //fire SWAL
     console.log(`Account changed in doWalletConnect ${account.address}`)
+    setTimeout(() => {
+      showGetStartedAsPrompt()
+    }, 2000)
   })
 }
 
-// function isWalletConnected() {
-//   return getAccount().isConnected
-// }
+function showGetStartedAsPrompt() {
+  Swal.fire({
+    title: 'Get Started As',
+    text: 'You have connected your wallet, please choose how you want to proceed as',
+    icon: 'info',
+    showCancelButton: true,
+    showDenyButton: true,
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+    confirmButtonColor: '#0712e4',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Student',
+    denyButtonText: 'Tutor',
+    denyButtonColor: '#0712e4',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //proceed as student
+      window.location.replace('/student/dashboard')
+    }
+
+    if (result.isDenied) {
+      //proceed as tutor
+      window.location.replace('/tutor/dashboard')
+    }
+  })
+}
+
+function showConnectWalletPrompt() {
+  Swal.fire({
+    title: 'Connect Wallet',
+    text: "You haven't connected your wallet, do connect to ensure maximum utilization of our patform",
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#0712e4',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Connect',
+    allowEscapeKey: false,
+    allowOutsideClick: false,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //try to connect wallet over here
+
+      doWalletConnect().then((result) => {
+        // console.log(`Is Wallet Connected: ${window.getAccount.address}`)
+        // if(isWalletConnected())
+        // {
+        //   showGetStartedAsPrompt()
+        // }
+      })
+    }
+  })
+}
 
 window.doWalletConnect = doWalletConnect
-window.getAccount = getAccount()
-window.web3Modal = web3Modal
+window.showGetStartedAsPrompt = showGetStartedAsPrompt
+window.showConnectWalletPrompt = showConnectWalletPrompt
