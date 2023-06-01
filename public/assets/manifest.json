@@ -3,11 +3,12 @@
   "assets/app.js": "http://localhost:8080/assets/app.js",
   "assets/node_modules_isomorphic-ws_browser_js.js": "http://localhost:8080/assets/node_modules_isomorphic-ws_browser_js.js",
   "assets/vendors-node_modules_noble_curves_esm_secp256k1_js.js": "http://localhost:8080/assets/vendors-node_modules_noble_curves_esm_secp256k1_js.js",
-  "assets/vendors-node_modules_walletconnect_legacy-provider_dist_esm_index_js.js": "http://localhost:8080/assets/vendors-node_modules_walletconnect_legacy-provider_dist_esm_index_js.js",
+  "assets/_d546-_8131-_3fc0-_cad2-_593c-_4068-_e7e4-_7bec-_802b-_1e44-_0aec-_06a0-_fbf1-_3e83-_19e6-_0c-4aa24d.js": "http://localhost:8080/assets/_d546-_8131-_3fc0-_cad2-_593c-_4068-_e7e4-_7bec-_802b-_1e44-_0aec-_06a0-_fbf1-_3e83-_19e6-_0c-4aa24d.js",
   "assets/_25ed.js": "http://localhost:8080/assets/_25ed.js",
   "assets/vendors-node_modules_web3modal_ui_dist_index_js.js": "http://localhost:8080/assets/vendors-node_modules_web3modal_ui_dist_index_js.js",
   "assets/node_modules_web3modal_standalone_dist_index_js.js": "http://localhost:8080/assets/node_modules_web3modal_standalone_dist_index_js.js",
   "assets/vendors-node_modules_qrcode_lib_browser_js.js": "http://localhost:8080/assets/vendors-node_modules_qrcode_lib_browser_js.js",
-  "assets/vendors-node_modules_walletconnect_jsonrpc-http-connection_dist_esm_index_js-node_modules_wal-cbb969.js": "http://localhost:8080/assets/vendors-node_modules_walletconnect_jsonrpc-http-connection_dist_esm_index_js-node_modules_wal-cbb969.js",
-  "assets/vendors-node_modules_walletconnect_ethereum-provider_dist_index_es_js.js": "http://localhost:8080/assets/vendors-node_modules_walletconnect_ethereum-provider_dist_index_es_js.js"
+  "assets/vendors-node_modules_walletconnect_jsonrpc-http-connection_dist_esm_index_js-node_modules_wal-ead203.js": "http://localhost:8080/assets/vendors-node_modules_walletconnect_jsonrpc-http-connection_dist_esm_index_js-node_modules_wal-ead203.js",
+  "assets/vendors-node_modules_walletconnect_legacy-provider_dist_esm_index_js.js": "http://localhost:8080/assets/vendors-node_modules_walletconnect_legacy-provider_dist_esm_index_js.js",
+  "assets/vendors-node_modules_wagmi_connectors_node_modules_walletconnect_ethereum-provider_dist_index_es_js.js": "http://localhost:8080/assets/vendors-node_modules_wagmi_connectors_node_modules_walletconnect_ethereum-provider_dist_index_es_js.js"
 }
