@@ -9,31 +9,32 @@
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                  <p class="mb-0">Enter your details and connect with your wallet to register.</p>
+                  <p class="mb-0">Enter your details to be linked with your wallet to register.</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form role="form" method="POST" action="{{ route('student.register.do') }}">
+                  {{ csrfField() }}
                     <label>Name</label>
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon">
+                      <input type="text" name="fullName" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon" required>
                     </div>
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" required>
                     </div>
-                    {{--  <label>Password</label>
+                    <label>Wallet Address</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                    </div>  --}}
+                      <input type="text" class="form-control" name="walletAddress" placeholder="Wallet Address" aria-label="Wallet Address" value="{{ address }}" readonly="true" required>
+                    </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign Up</button>
+                      <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign Up</button>
                     </div>
                   </form>
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Already have an account?
-                    <a href="register.html" class="text-info text-gradient font-weight-bold">Sign In</a>
+                    <a href="{{ route('student.index') }}" class="text-info text-gradient font-weight-bold">Sign In</a>
                   </p>
                 </div>
               </div>

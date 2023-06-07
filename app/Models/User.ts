@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import {
@@ -25,7 +26,7 @@ export default class User extends BaseModel {
   public email: string | null
 
   @column()
-  public nonce: number
+  public nonce: string
 
   @column()
   public fullName: string | null
@@ -54,6 +55,13 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password)
     }
   }
+
+  @beforeSave()
+  public static async generateNonce(user: User) {
+    const bytes = crypto.randomBytes(25)
+      user.nonce =   bytes.toString('hex')
+  }
+  
   //Student Relationships
   @hasMany(() => ProgrammeApplication)
   public programmeApplications: HasMany<typeof ProgrammeApplication>
@@ -75,4 +83,6 @@ export default class User extends BaseModel {
 
   @hasMany(() => Announcement)
   public announcements: HasMany<typeof Announcement>
+
+
 }
