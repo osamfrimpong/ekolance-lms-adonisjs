@@ -64,9 +64,11 @@ async function doWalletConnect() {
   const unwatchNetwork = watchAccount((account) => {
     //fire SWAL
     console.log(`Account changed in doWalletConnect ${account.address}`)
-    setTimeout(() => {
-      showGetStartedAsPrompt()
-    }, 2000)
+    if (account.address !== undefined) {
+      setTimeout(() => {
+        showGetStartedAsPrompt()
+      }, 2000)
+    }
   })
 }
 
@@ -87,12 +89,12 @@ function showGetStartedAsPrompt() {
   }).then((result) => {
     if (result.isConfirmed) {
       //proceed as student
-      window.location.replace('/student/dashboard')
+      window.location.replace(`/student/register/${getAccount().address}`)
     }
 
     if (result.isDenied) {
       //proceed as tutor
-      window.location.replace('/tutor/dashboard')
+      window.location.replace(`/tutor/register/${getAccount().address}`)
     }
   })
 }
