@@ -69,6 +69,18 @@ declare module '@ioc:Adonis/Addons/Auth' {
       config: SessionGuardConfig<'user'>
       client: SessionClientContract<'user'>
     }
+
+    student: {
+      implementation: SessionGuardContract<'user', 'student'>
+      config: SessionGuardConfig<'user'>
+      client: SessionClientContract<'user'>
+    }
+
+    tutor: {
+      implementation: SessionGuardContract<'user', 'tutor'>
+      config: SessionGuardConfig<'user'>
+      client: SessionClientContract<'user'>
+    }
     /*
     |--------------------------------------------------------------------------
     | OAT Guard

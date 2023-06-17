@@ -51,11 +51,20 @@ const web3Modal = new Web3Modal(
 
 const unwatchAccount = watchAccount((account) => {
   console.log(`Account change ${account.address}`)
+  localStorage.setItem('walletAddress', account.address)
+  storeWalletAddress(account.address)
 })
 
-const unwatchNetwork = watchNetwork((network) => {
-  // console.log(`Network change ${network.chain.name} - ${network.chain.id}`)
-})
+function storeWalletAddress(walletAddress) {
+  fetch(`/walletAddress/store/${walletAddress}`)
+    .then((response) => response.json()) // Parse response as JSON
+    .then((data) => {
+      console.log(`New Wallet Address ${walletAddress}`)
+    })
+}
+// const unwatchNetwork = watchNetwork((network) => {
+//   // console.log(`Network change ${network.chain.name} - ${network.chain.id}`)
+// })
 
 async function doWalletConnect() {
   console.log('Do wallet connect')
@@ -63,7 +72,10 @@ async function doWalletConnect() {
 
   const unwatchNetwork = watchAccount((account) => {
     //fire SWAL
-    console.log(`Account changed in doWalletConnect ${account.address}`)
+
+    localStorage.setItem('walletAddress', account.address)
+    storeWalletAddress(account.address)
+
     if (account.address !== undefined) {
       setTimeout(() => {
         showGetStartedAsPrompt()
@@ -89,12 +101,12 @@ function showGetStartedAsPrompt() {
   }).then((result) => {
     if (result.isConfirmed) {
       //proceed as student
-      window.location.replace(`/student/register/${getAccount().address}`)
+      window.location.replace('/student/register')
     }
 
     if (result.isDenied) {
       //proceed as tutor
-      window.location.replace(`/tutor/register/${getAccount().address}`)
+      window.location.replace('/tutor/register')
     }
   })
 }
@@ -128,3 +140,4 @@ function showConnectWalletPrompt() {
 window.doWalletConnect = doWalletConnect
 window.showGetStartedAsPrompt = showGetStartedAsPrompt
 window.showConnectWalletPrompt = showConnectWalletPrompt
+window.Swal = Swal

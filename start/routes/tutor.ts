@@ -7,5 +7,6 @@ Route.group(() => {
   Route.get('/profile', 'TutorDashboardController.profile').as('profile')
   Route.resource('assignments', 'AssignmentsController')
 })
+  .middleware('auth:tutor')
   .prefix('/tutor')
   .as('tutor')

@@ -38,6 +38,7 @@
   <link href="{{ staticFile('css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ staticFile('css/soft-ui-dashboard.css?v=1.0.3')}}" rel="stylesheet" />
+  @entryPointScripts('app')
 </head>
 
 <body class="">
@@ -174,6 +175,48 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ staticFile('js/soft-ui-dashboard.min.js?v=1.0.3')}}"></script>
+  <script>
+  function doSignIn(){
+       //attempt login
+        fetch(`/student/login/do`)
+  .then(response => response.json()) // Parse response as JSON
+  .then(data => {
+    // Access the PromiseResult (data) here
+    if(data.success){
+        Swal.fire({
+  icon: 'success',
+  title: 'All Set!',
+  text: data.message,
+
+}).then(() => window.location.replace('/student/dashboard') )
+    }
+    else
+    {
+      Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: data.message,
+
+})
+    }
+  })
+  .catch(error => {
+    // Handle any errors that occur during the fetch request
+    console.error('Error:', error);
+    Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'Sorry. We couldn\'t Log you In. Please try again.',
+
+})})
+
+
+  }
+
+  function getAddress(){
+    getConnectedAddress()
+  }
+  </script>
 </body>
 
 </html>
