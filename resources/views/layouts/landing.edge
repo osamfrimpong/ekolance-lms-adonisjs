@@ -103,10 +103,10 @@
 
    <script type="text/javascript">
 
-  const isWalletConnected = localStorage.getItem('wagmi.connected')
+  const isWalletConnected = localStorage.getItem('walletAddress')
 
    function getStarted(){
-      if ( isWalletConnected !== 'true') {
+      if ( isWalletConnected == undefined) {
         //wallet is not connected
         showConnectWalletPrompt()
       }
@@ -117,7 +117,7 @@
    }
    //check if wallet is connected or not
 
-if ( isWalletConnected !== 'true') {
+if ( isWalletConnected == undefined) {
   console.log('wallet not connected')
   //show alert after some timer
   setTimeout(() => {

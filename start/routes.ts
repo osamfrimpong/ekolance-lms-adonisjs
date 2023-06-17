@@ -26,6 +26,8 @@ import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'LandingPagesController.index').as('home')
 
+Route.get('/walletAddress/store/:address', 'WalletsController.storeAddress').as('wallet.store')
+
 Route.get('/connect', ({ view }) => {
   return view.render('welcome')
 })

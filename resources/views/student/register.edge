@@ -9,34 +9,45 @@
               <div class="card card-plain mt-8">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                  <p class="mb-0">Enter your details to be linked with your wallet to register.</p>
+                  <p class="mb-0">{{ studentExists ? "You are already Registered" : "Enter your details to be linked with your wallet to register."}}</p>
                 </div>
                 <div class="card-body">
-                  <form role="form" method="POST" action="{{ route('student.register.do') }}">
+                @if(address !== 'undefined')
+                     <form role="form" method="POST" action="{{ route('student.register.do') }}">
                   {{ csrfField() }}
                     <label>Name</label>
                     <div class="mb-3">
-                      <input type="text" name="fullName" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon" required>
+                      <input type="text" name="fullName" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="name-addon" value="{{ studentExists ? foundStudent.fullName : ""}}" required>
                     </div>
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon" required>
+                      <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon"value="{{ studentExists ? foundStudent.email : ""}}"  required>
                     </div>
                     <label>Wallet Address</label>
                     <div class="mb-3">
                       <input type="text" class="form-control" name="walletAddress" placeholder="Wallet Address" aria-label="Wallet Address" value="{{ address }}" readonly="true" required>
                     </div>
                     <div class="text-center">
+                    @if(studentExists)
+                      <button type="button" onclick="doSignIn()" class="btn bg-gradient-info w-100 mt-4 mb-0">Proceed To Sign In</button>
+                    @else
                       <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign Up</button>
+                    @end
                     </div>
                   </form>
+                @else
+                      <button type="button" onclick="doWalletConnect()" class="btn bg-gradient-danger w-100 mt-4 mb-0">Connect Wallet</button>
+                @end
+
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+
+                  <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-4 text-sm mx-auto">
                     Already have an account?
                     <a href="{{ route('student.index') }}" class="text-info text-gradient font-weight-bold">Sign In</a>
                   </p>
                 </div>
+
               </div>
             </div>
             <div class="col-md-6">
